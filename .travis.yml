@@ -12,6 +12,6 @@ script:
   - cd SOS-shoppingCart
   - py.test test.py --cov=sample.py
   - py.test test.py --cov='.'
-  - py.test --cov --cov-report html
+  #- py.test --cov --cov-report html
 after_success:
    - coveralls
