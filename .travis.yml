@@ -10,6 +10,7 @@ script:
   - pip install coverage==4.5.4
   - git clone https://github.com/kungkingc/SOS-shoppingCart.git
   - cd SOS-shoppingCart
-  - pytest --cov=SOS-shoppingCart/test
+  - py.test --cov=SOS-shoppingCart/test
+  - py.test --cov --cov-report html
 after_success:
    - coveralls
