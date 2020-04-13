@@ -6,6 +6,9 @@ install:
   - pip install pytest
   - pip install pytest-cov
   - pip install coveralls
-script: pip install coverage==4.5.4
+script: 
+  - pip install coverage==4.5.4
+  - py.test SOS-shoppingCart/test.py --cov=SOS-shoppingCart
+  - py.test coveralls/test.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
 after_success:
    - coveralls
