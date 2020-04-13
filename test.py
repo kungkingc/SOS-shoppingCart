@@ -1,1 +1,2 @@
-print("Hello world")
+def test_print:
+  print("Hello world")
