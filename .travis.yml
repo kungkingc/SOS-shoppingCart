@@ -1,0 +1,20 @@
+language: python
+python:
+  - "2.7"
+  - "3.5"
+  - "3.6"
+  - "3.7"
+install:
+  - pip install -U pip
+  - python setup.py develop
+before_script:
+  - pip install -I -r requirements.txt
+  - git clone https://github.com/kungkingc/SOS-shoppingCart.git
+  - cd SOS-shoppingCart
+  - git checkout -qf 911c62663ecfe9b6b0e0355a1012c2e4ed898cef
+  - py.test SOS-shoppingCart/test.py --cov=SOS-shoppingCart
+  - cd -
+script:
+  - py.test coveralls/test.py --doctest-modules --pep8 coveralls -v --cov coveralls --cov-report term-missing
+after_success:
+  - coveralls
