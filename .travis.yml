@@ -9,6 +9,8 @@ script:
   - pip install coverage==4.5.4
   - git clone https://github.com/kungkingc/SOS-shoppingCart.git
   - cd SOS-shoppingCart
+  # py.test --cov Cart.py Product.py Main.py
+  # pytest --cov=Cart --cov=Product --cov=Main
   - pytest --cov Cart Product test.py
   #- py.test test.py --cov='.'
 after_success:
