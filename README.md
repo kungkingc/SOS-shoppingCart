@@ -1,33 +1,26 @@
 SOS Shopping Cart API
 =====================
-PI for shopping cart provides a selection of endpoints for interacting with a shopping cart backend mechanics for an online shopping website's shopping cart micro-service with cart history database is provided as well. It utiltizes continious integration and continuous deployment, or CI and CD respectively, through Travis CI and Heroku. 
+This API for shopping carts provides a selection of endpoints for interacting with backend mechanics for an online shopping website's cart as a micro-service, with cart transaction history database. We utiltize continious integration (CI) and continuous deployment (CD) through Travis CI and Heroku. 
+
+## List of requirements for this API.
+
+- Update a shopping cart (add/remove)
+- Check out (Complete the purchase of all the items in the shopping cart)
+- Display history and current shopping carts
 
 # Contents
 
 - [Generals](#generals)
-  - [Functions](#funct)
   - [Hello World](#hello)
   - [Authentication - Authorization](#auth)
 - [Cart](#cart) 
-  - [Cart Object] (#obj)
-  - [Cart History Database] (#db)
+  - [Cart Object](#obj)
+  - [Cart History Database](#db)
 - [API](#api)
   - [Endpoints](#endpts)
   - [Requests and responses](#req)
     - [GET current shopping carts](#current)
-  
-## Functions
-
-List of requirements for this API.
-
-- Display a shopping cart
-- Display all carts 
-- Create a shopping cart.
-- Update a shopping cart
-- Check out (Complete the purchase of all the items in the shopping cart)
-- Search cart history
-
-
+ 
 ## Hello World
 Our SOS shopping cart is deployed through heroku at: 
 ```
@@ -52,7 +45,7 @@ Authorization functionality is provided by a separate, web front-end, micro-serv
 | Attribute | Type | Description |
 |-----------|------|-------------|
 |**cart_id** |integer |ID of the shopping cart|
-|**product_list** |List of products within the shopping cart|
+|**product_list**|integer |List of products within the shopping cart|
 |**user_id** |integer |Owner's id of the shopping cart|
 |**complete** |boolean |False = current cart, True = history cart|
 
@@ -62,7 +55,7 @@ Authorization functionality is provided by a separate, web front-end, micro-serv
 |-----------|------|-------------|
 |**cart_id** |integer |ID of the shopping cart|
 |**user_id** |integer |Owner's id of the shopping cart|
-|**product_id** |ID of the product put into shopping cart|
+|**product_id** |integer |ID of the product put into shopping cart|
 |**quantity** |integer |Number of products selected|
 |**complete** |boolean |False = current cart, True = history cart|
 
@@ -71,24 +64,61 @@ Authorization functionality is provided by a separate, web front-end, micro-serv
 ## Endpoints
 
 |Method|Endpoint/Request|Description|
-|-----|---------------------------------|
-|GET|    /api/v1/users/:user_id/current_transactions/|Display active carts|
-|GET|    /api/v1/users/:user_id/history_transactions/|Display carts that were checked out|
-|POST|   /api/v1/users/:product_id/:quantity/| Add and remove a product item|
-|POST|   /api/v1/users/:user_id/checkout|Checkout shopping cart|
-X|GET|    /api/v1/carts| Display all carts present in the database|
-X|DELETE| /api/v1/users/:user_id/carts/:cart_id/:product_id/| Remove a product from current cart|
+|------|----------------|-----------|
+|**POST**|   /api/v1/transactions| Add or remove product items|
+|**POST**|   /api/v1/users/:user_id/checkout|Checkout shopping cart|
+|**GET**|    /api/v1/users/:user_id/current_transactions/|Display active carts|
+|**GET**|    /api/v1/users/:user_id/history_transactions/|Display carts that were checked out|
 
 ## Requests and responses 
 
 Example of requests and responses are given for each endpoints:
 
-### GET current shopping carts
-|GET|    /api/v1/users/:user_id/current_transactions/|Display active carts|
+
+### POST add or remove product items
+Create new transaction on the basis of `product_id` and `quantity` parameter
+Endpoint: /api/v1/transactions/
+
+**Add Example:** 
+
+```
+POST /api/v1/transactions
+Content-type: application/json 
+Accept: application/json
+```
+**Reponse to request:**
+```
+{
+	"user_id": 55
+	"product id": "1",
+	"quantity": "1",
+}
+```
+
+**Remove Example:** 
+
+```
+POST /api/v1/transactions
+Content-type: application/json 
+Accept: application/json
+```
+**Reponse to request:**
+```
+{
+	"user_id": 55
+	"product id": "1",
+	"quantity": "0",
+}
+```
+
+### POST checkout shopping cart
+Update `False` status of `complete` parameter of current cart to be `True` = PAID
+Endpoint: /api/v1/users/:user_id/checkout
 
 **Example:** 
+
 ```
-GET /api/v1/users/2/current_transactions
+GET /api/v1/users/2/checkout
 Content-type: application/json 
 Accept: application/json
 ```
@@ -98,5 +128,34 @@ Accept: application/json
 }
 ```
 
-Create new transaction on the basis of `product_id` and `quantity` parameter
-Update `False` status of `complete` parameter of current cart to be `True` = PAID
+### GET current shopping carts
+Endpoint:  /api/v1/users/:user_id/current_transactions/
+
+**Example:** 
+
+```
+GET /api/v1/users/2/current_transactions/
+Content-type: application/json 
+Accept: application/json
+```
+**Reponse to request:**
+```
+{
+}
+```
+
+### GET history shopping carts
+Endpoint: /api/v1/users/:user_id/history_transactions/
+
+**Example:** 
+
+```
+GET /api/v1/users/2/history_transactions
+Content-type: application/json 
+Accept: application/json
+```
+**Reponse to request:**
+```
+{
+}
+```
