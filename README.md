@@ -24,7 +24,7 @@ This API for shopping cart provides a selection of endpoints for interacting wit
     - [GET current shopping carts](#current)
     - [GET history shopping carts](#history)
  
-## Hello World
+## Hello World (#hello)
 Our SOS shopping cart is deployed through heroku at: 
 ```
 https://sos-shoppingcart.herokuapp.com/
@@ -38,12 +38,12 @@ If you look at the header, you should see that the content-type is json:
 Content-Type: application/json
 ```
 
-## Authentication - Authorization
+## Authentication - Authorization(#auth)
 Authorization functionality is provided by a separate, web front-end, micro-service. Therefore, a JWT token (or some other token) is provided by this microservice and included in the Authorization header in all HTTP requests. 
 
-# Cart
+# Cart (#cart) 
 
-## Cart Object
+## Cart Object(#obj) 
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
@@ -52,7 +52,7 @@ Authorization functionality is provided by a separate, web front-end, micro-serv
 |**user_id** |integer |Owner's id of the shopping cart|
 |**complete** |boolean |False = current cart, True = history cart|
 
-## Cart Transaction History Database
+## Cart Transaction History Database (#db) 
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -62,9 +62,9 @@ Authorization functionality is provided by a separate, web front-end, micro-serv
 |**quantity** |integer |Number of products selected|
 |**complete** |boolean |False = current cart, True = history cart|
 
-# API
+# API (#api) 
 
-## Endpoints
+## Endpoints (#endpts) 
 
 |Method|Endpoint/Request|Description|
 |------|----------------|-----------|
@@ -73,12 +73,12 @@ Authorization functionality is provided by a separate, web front-end, micro-serv
 |**GET**|    /api/v1/users/:user_id/current_transactions/|Display active carts|
 |**GET**|    /api/v1/users/:user_id/history_transactions/|Display carts that were checked out|
 
-## Requests and responses 
+## Requests and responses (#req)
 
 Example of requests and responses are given for each endpoints:
 
 
-### POST add or remove product items
+### POST add or remove product items (#transactions)
 Create new transaction on the basis of `product_id` and `quantity` parameter
 Endpoint: /api/v1/transactions/
 
@@ -114,7 +114,7 @@ Accept: application/json
 }
 ```
 
-### POST checkout shopping cart
+### POST checkout shopping cart (#checkout)
 Update `False` status of `complete` parameter of current cart to be `True` = PAID
 Endpoint: /api/v1/users/:user_id/checkout
 
@@ -131,7 +131,7 @@ Accept: application/json
 }
 ```
 
-### GET current shopping carts
+### GET current shopping carts (#current)
 Endpoint:  /api/v1/users/:user_id/current_transactions/
 
 **Example:** 
@@ -147,7 +147,7 @@ Accept: application/json
 }
 ```
 
-### GET history shopping carts
+### GET history shopping carts (#history)
 Endpoint: /api/v1/users/:user_id/history_transactions/
 
 **Example:** 
