@@ -10,9 +10,9 @@ This repo contains API for shopping cart contains backend mechanics for online s
     - change status of cart to false
     
 * Generals
-⋅⋅* Hello world
+** Hello world
 ⋅⋅⋅Our SOS shopping cart is located at: https://sos-shoppingcart.herokuapp.com/
 ⋅⋅⋅You can try send a `GET` request to the endpoint. You should see the following JSON message:
-⋅⋅⋅"Welcome to the API"
+⋅⋅⋅⋅"Welcome to the API"
 ⋅⋅⋅If you look at the header, you should see that the content-type is json:
-⋅⋅⋅Content-Type: application/json
+⋅⋅⋅⋅Content-Type: application/json
