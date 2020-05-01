@@ -15,7 +15,7 @@ This API for shopping cart provides a selection of endpoints for interacting wit
   - [Authentication - Authorization](#auth)
 - [Cart](#cart) 
   - [Cart Object](#obj)
-  - [Cart History Database](#db)
+  - [Cart Transaction History Database](#db)
 - [API](#api)
   - [Endpoints](#endpts)
   - [Requests and responses](#req)
@@ -52,7 +52,7 @@ Authorization functionality is provided by a separate, web front-end, micro-serv
 |**user_id** |integer |Owner's id of the shopping cart|
 |**complete** |boolean |False = current cart, True = history cart|
 
-## Cart Transaction Database
+## Cart Transaction History Database
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
