@@ -1,12 +1,12 @@
 SOS Shopping Cart API
 =====================
-This API for shopping carts provides a selection of endpoints for interacting with backend mechanics for an online shopping website's cart as a micro-service, with cart transaction history database. We utiltize continious integration (CI) and continuous deployment (CD) through Travis CI and Heroku. 
+This API for shopping cart provides a selection of endpoints for interacting with backend mechanics for an online shopping website's cart as a micro-service, with cart transaction history database. We utiltize continious integration (CI) and continuous deployment (CD) through Travis CI and Heroku. 
 
-## List of requirements for this API.
+## List of requirements:
 
 - Update a shopping cart (add/remove)
-- Check out (Complete the purchase of all the items in the shopping cart)
-- Display history and current shopping carts
+- Check out (Complete purchase of all products in current shopping cart)
+- Display history and current shopping carts of each user
 
 # Contents
 
@@ -19,7 +19,10 @@ This API for shopping carts provides a selection of endpoints for interacting wi
 - [API](#api)
   - [Endpoints](#endpts)
   - [Requests and responses](#req)
+    - [POST add or remove product items](#transaction)
+    - [POST checkout shopping cart](#checkout)
     - [GET current shopping carts](#current)
+    - [GET history shopping carts](#history)
  
 ## Hello World
 Our SOS shopping cart is deployed through heroku at: 
