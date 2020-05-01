@@ -24,7 +24,7 @@ This API for shopping cart provides a selection of endpoints for interacting wit
     - [GET current shopping carts](#current)
     - [GET history shopping carts](#history)
  
-## Hello World (#hello)
+## Hello World 
 Our SOS shopping cart is deployed through heroku at: 
 ```
 https://sos-shoppingcart.herokuapp.com/
@@ -38,12 +38,12 @@ If you look at the header, you should see that the content-type is json:
 Content-Type: application/json
 ```
 
-## Authentication - Authorization(#auth)
+## Authentication - Authorization
 Authorization functionality is provided by a separate, web front-end, micro-service. Therefore, a JWT token (or some other token) is provided by this microservice and included in the Authorization header in all HTTP requests. 
 
-# Cart (#cart) 
+# Cart 
 
-## Cart Object(#obj) 
+## Cart Object
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
@@ -52,7 +52,7 @@ Authorization functionality is provided by a separate, web front-end, micro-serv
 |**user_id** |integer |Owner's id of the shopping cart|
 |**complete** |boolean |False = current cart, True = history cart|
 
-## Cart Transaction History Database (#db) 
+## Cart Transaction History Database
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
@@ -62,14 +62,14 @@ Authorization functionality is provided by a separate, web front-end, micro-serv
 |**quantity** |integer |Number of products selected|
 |**complete** |boolean |False = current cart, True = history cart|
 
-# API (#api) 
+# API
 
-## Endpoints (#endpts) 
+## Endpoints
 
 |Method|Endpoint/Request|Description|
 |------|----------------|-----------|
 |**POST**|   /api/v1/transactions| Add or remove product items|
-|**POST**|   /api/v1/users/:user_id/checkout|Checkout shopping cart|
+|**POST**|   /api/v1/checkout|Checkout shopping cart|
 |**GET**|    /api/v1/users/:user_id/current_transactions/|Display active carts|
 |**GET**|    /api/v1/users/:user_id/history_transactions/|Display carts that were checked out|
 
@@ -78,7 +78,7 @@ Authorization functionality is provided by a separate, web front-end, micro-serv
 Example of requests and responses are given for each endpoints:
 
 
-### POST add or remove product items (#transactions)
+### POST add or remove product items
 Create new transaction on the basis of `product_id` and `quantity` parameter
 Endpoint: /api/v1/transactions/
 
@@ -114,14 +114,14 @@ Accept: application/json
 }
 ```
 
-### POST checkout shopping cart (#checkout)
+### POST checkout shopping cart
 Update `False` status of `complete` parameter of current cart to be `True` = PAID
-Endpoint: /api/v1/users/:user_id/checkout
+Endpoint: /api/v1/checkout
 
 **Example:** 
 
 ```
-GET /api/v1/users/2/checkout
+GET /api/v1/checkout
 Content-type: application/json 
 Accept: application/json
 ```
@@ -131,10 +131,10 @@ Accept: application/json
 }
 ```
 
-### GET current shopping carts (#current)
+### GET current shopping carts
 Endpoint:  /api/v1/users/:user_id/current_transactions/
 
-**Example:** 
+**Example:** Current user `id` = 2 
 
 ```
 GET /api/v1/users/2/current_transactions/
@@ -147,10 +147,10 @@ Accept: application/json
 }
 ```
 
-### GET history shopping carts (#history)
+### GET history shopping carts
 Endpoint: /api/v1/users/:user_id/history_transactions/
 
-**Example:** 
+**Example:**  Current user `id` = 2 
 
 ```
 GET /api/v1/users/2/history_transactions
