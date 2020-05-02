@@ -31,7 +31,7 @@ https://sos-shoppingcart.herokuapp.com/
 ```
 You can try send a `GET` request to the endpoint. You should see the following JSON message:
 ```
-"Welcome to the API"
+"Welcome to the shopping cart and cart transaction database API!"
 ```
 If you look at the header, you should see that the content-type is json:
 ```
@@ -73,10 +73,9 @@ Authorization functionality is provided by a separate, web front-end, micro-serv
 |**GET**|    /api/v1/users/:user_id/current_transactions/|Display active carts|
 |**GET**|    /api/v1/users/:user_id/history_transactions/|Display carts that were checked out|
 
-## Requests and responses (#req)
+## Requests and responses
 
 Example of requests and responses are given for each endpoints:
-
 
 ### POST add or remove product items
 Create new transaction on the basis of `product_id` and `quantity` parameter
@@ -95,6 +94,7 @@ Accept: application/json
 	"user_id": 55
 	"product id": "1",
 	"quantity": "1",
+	"complete": "False"
 }
 ```
 
@@ -111,6 +111,7 @@ Accept: application/json
 	"user_id": 55
 	"product id": "1",
 	"quantity": "0",
+	"complete": True"
 }
 ```
 
