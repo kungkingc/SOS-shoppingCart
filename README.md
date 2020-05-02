@@ -39,7 +39,7 @@ Content-Type: application/json
 ```
 
 ## Authentication - Authorization
-Authorization functionality is provided by a separate, web front-end, micro-service. Therefore, a JWT token (or some other token) is provided by this microservice and included in the Authorization header in all HTTP requests. 
+Authorization functionality is provided by a separate, web front-end, micro-service. Therefore, a JWT token is provided by front-end microservice and included in the Authorization header in all HTTP requests. 
 
 # Cart 
 
