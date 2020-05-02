@@ -84,14 +84,15 @@ Endpoint: /api/v1/transactions/
 **Add Example:** 
 
 ```
-POST /api/v1/transactions
+POST /api/v1/add
 Content-type: application/json 
 Accept: application/json
 ```
 **Reponse to request:**
 ```
 {
-	"user_id": 55
+	"cart_id": "1",
+	"user_id": "55",
 	"product id": "1",
 	"quantity": "1",
 	"complete": "False"
@@ -101,17 +102,18 @@ Accept: application/json
 **Remove Example:** 
 
 ```
-POST /api/v1/transactions
+POST /api/v1/remove
 Content-type: application/json 
 Accept: application/json
 ```
 **Reponse to request:**
 ```
 {
-	"user_id": 55
+	"cart_id": "1",
+	"user_id": "55",
 	"product id": "1",
 	"quantity": "0",
-	"complete": True"
+	"complete": "True"
 }
 ```
 
